@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iPhone Selection</title>
+    <!-- Подключение файла стилей CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Выбор iPhone</h1>
+
+        <!-- Выпадающее меню -->
+        <div class="dropdown">
+            <label for="iphone-menu">Выберите модель iPhone:</label>
+            <select id="iphone-menu">
+                <option value="11 Pro Max" data-price="999" data-image="images/iphone-11-pro-max.jpg">iPhone 11 Pro Max</option>
+                <option value="12 Pro Max" data-price="1099" data-image="images/iphone-12-pro-max.jpg">iPhone 12 Pro Max</option>
+                <option value="13 Pro Max" data-price="1199" data-image="images/iphone-13-pro-max.jpg">iPhone 13 Pro Max</option>
+                <option value="14 Pro Max" data-price="1299" data-image="images/iphone-14-pro-max.jpg">iPhone 14 Pro Max</option>
+                <option value="15 Pro Max" data-price="1399" data-image="images/iphone-15-pro-max.png">iPhone 15 Pro Max</option>
+            </select>
+        </div>
+
+        <!-- Отображение фотографии и стоимости -->
+        <div id="display-section" class="display-section">
+            <!-- Место для фотографии -->
+            <img id="iphone-image" src="images/iphone-11-pro-max.jpg" alt="iPhone Image" class="image-border">
+
+            <!-- Отображение стоимости -->
+            <div id="price-display" class="price-display">Стоимость: $999</div>
+        </div>
+    </div>
+
+    <!-- Подключение скриптов -->
+    <script>
+        // Обработчик события для выпадающего меню
+        document.getElementById('iphone-menu').addEventListener('change', function() {
+            // Получаем выбранный элемент
+            const selectedOption = this.options[this.selectedIndex];
+            
+            // Получаем стоимость из атрибута data-price
+            const price = selectedOption.getAttribute('data-price');
+            
+            // Получаем URL изображения из атрибута data-image
+            const imageUrl = selectedOption.getAttribute('data-image');
+            
+            // Обновляем отображение стоимости
+            document.getElementById('price-display').textContent = 'Стоимость: $' + price;
+            
+            // Обновляем URL изображения
+            document.getElementById('iphone-image').src = imageUrl;
+        });
+    </script>
+</body>
+</html>
